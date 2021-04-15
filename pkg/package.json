@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "Whitespace’s basic Gatsby theme for Wordpress",
   "license": "MIT",
+  "files": [
+    "src/**/*",
+    "node/**/*",
+    "README.md",
+    "*.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "cp ../README.md ."
+  },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@jfrk/react-heading-levels": "^1.0.0",
