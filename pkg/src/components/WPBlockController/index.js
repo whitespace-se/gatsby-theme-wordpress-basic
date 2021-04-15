@@ -1,0 +1,1 @@
+export { WPBlockController } from "./WPBlockController";

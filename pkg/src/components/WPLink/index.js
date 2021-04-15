@@ -1,0 +1,1 @@
+export { WPLink } from "./WPLink";

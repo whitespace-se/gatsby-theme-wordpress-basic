@@ -1,0 +1,1 @@
+export { WPCoreParagraphBlock } from "./WPCoreParagraphBlock";

@@ -1,0 +1,21 @@
+{
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "pkg",
+      "examples/*"
+    ]
+  },
+  "scripts": {
+    "format": "prettier --write '**/*.{js,jsx,json,md,mdx,yml,html,css,scss}'",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "^2.2.1"
+  }
+}
