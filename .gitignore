@@ -7,3 +7,6 @@ public
 
 # Environment
 .env.local.toml
+
+# Generated files
+pkg/README.md
