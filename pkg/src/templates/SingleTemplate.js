@@ -1,9 +1,7 @@
 import { H, Section } from "@jfrk/react-heading-levels";
 import React, { useEffect } from "react";
 
-import { FluidImage } from "../components/Image";
-import { Time } from "../components/Time";
-import { WPBlocks } from "../components/WPBlocks";
+import { Image, Time, WPBlocks } from "../components";
 import { usePageContext } from "../hooks/page-context";
 
 export default function SingleTemplate({ pageContext }) {
@@ -25,7 +23,7 @@ export default function SingleTemplate({ pageContext }) {
           Published: <Time date={dateGmt} />
         </div>
         {!!(featuredImage && featuredImage.node) && (
-          <FluidImage {...featuredImage.node} />
+          <Image {...featuredImage.node} />
         )}
         {!!blocksJSON && (
           <WPBlocks

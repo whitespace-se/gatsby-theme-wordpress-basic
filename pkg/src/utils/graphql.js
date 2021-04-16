@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import cloneDeep from "lodash.clonedeep";
+import { cloneDeep } from "lodash";
 import traverse from "traverse";
 
 const getQuery = (query) => {

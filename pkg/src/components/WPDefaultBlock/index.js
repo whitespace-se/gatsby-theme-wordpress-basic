@@ -1,1 +1,0 @@
-export { WPDefaultBlock } from "./WPDefaultBlock";

@@ -13,19 +13,8 @@ export default function usePages() {
             parentId
             title(format: RAW)
             isFrontPage
-            # featuredImage {
-            #   databaseId
-            #   src: sourceUrl(size: PROMO_CARD_SMALL)
-            #   srcSet(size: PROMO_CARD_LARGE)
-            #   width(size: PROMO_CARD_LARGE)
-            #   height(size: PROMO_CARD_LARGE)
-            #   altText
-            # }
             uri
             url: uri
-            # themeColor
-            # description
-            # icon
           }
         }
       }

@@ -3,7 +3,7 @@ import qs from "query-string";
 import React, { Suspense } from "react";
 import useSSR from "use-ssr";
 
-import { LoadingScreen } from "../components/LoadingScreen";
+import { WPPreviewLoadingScreen, LazyWPPreview } from "../components";
 
 const PreviewIndicator = styled.span`
   position: fixed;
@@ -24,23 +24,23 @@ const PreviewIndicatorInner = styled.span`
   text-align: center;
 `;
 
-const WPPreview = React.lazy(() => import("../components/WPPreview"));
-
 export default function PreviewPage({ location }) {
   const { isBrowser } = useSSR();
   if (!isBrowser) {
     return <div>Preview only works with Javascript enabled</div>;
   }
-  const { id, wpnonce } = qs.parse(location.search);
+  const { id, wpnonce, user } = qs.parse(location.search);
 
   return (
     <Suspense
-      fallback={<LoadingScreen label={"Aktiverar förhandsgranskning"} />}
+      fallback={
+        <WPPreviewLoadingScreen label={"Aktiverar förhandsgranskning"} />
+      }
     >
       <PreviewIndicator>
         <PreviewIndicatorInner>Förhandsgranskning</PreviewIndicatorInner>
       </PreviewIndicator>
-      <WPPreview id={id} wpnonce={wpnonce} />
+      <LazyWPPreview id={id} wpnonce={wpnonce} user={user} />
     </Suspense>
   );
 }

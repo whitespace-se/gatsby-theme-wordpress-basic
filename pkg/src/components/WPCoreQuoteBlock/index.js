@@ -1,1 +1,0 @@
-export { WPCoreQuoteBlock } from "./WPCoreQuoteBlock";

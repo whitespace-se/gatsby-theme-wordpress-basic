@@ -3,12 +3,10 @@ import memoize from "lodash/memoize";
 import React from "react";
 import rehype2react from "rehype-react";
 import unified from "unified";
-// import { selectAll } from "unist-util-select";
 import visit from "unist-util-visit";
 import visitWithParents from "unist-util-visit-parents";
 
-import { FluidImage } from "../components/Image";
-import { WPLink } from "../components/WPLink";
+import { Image, WPLink } from "../components";
 
 export default function createHTMLProcessor({ rehypeParse: parse }) {
   function splitTree() {
@@ -52,7 +50,7 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
       }
       let { src, srcSet, width, height, base64, aspectRatio, alt } = attachment;
       return (
-        <FluidImage
+        <Image
           src={src}
           srcSet={srcSet}
           width={width}
@@ -87,7 +85,7 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
         photograph: { name: credit } = {},
       } = attachment;
       return (
-        <FluidImage
+        <Image
           src={src}
           srcSet={srcSet}
           width={width}

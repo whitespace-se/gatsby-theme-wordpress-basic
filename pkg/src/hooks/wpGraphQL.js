@@ -5,9 +5,10 @@ import {
   InMemoryCache,
 } from "apollo-cache-inmemory";
 import { useStaticQuery, graphql } from "gatsby";
+import { prependUsedFragments } from "gatsby-plugin-fragments/browser";
 import React, { useMemo } from "react";
 
-import { getIsolatedQuery, mergeQueries } from "../utils/graphql";
+import { getIsolatedQuery } from "../utils/graphql";
 import introspectionQueryResultData from "../wp-fragment-types";
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
@@ -60,16 +61,10 @@ export function useWPGraphQLQuery(query, context, ...args) {
         }
       }
     }
-  `).allGraphQlFragment.nodes;
-
-  const isolatedFragments = useMemo(
-    () => fragments.map((node) => getIsolatedQuery(node.source, "wp", "WP")),
-    [],
-  );
+  `).allGraphQlFragment.nodes.map((node) => node.source);
 
   const isolatedQuery = useMemo(() => {
-    const isolatedQuery = getIsolatedQuery(query, "wp", "WP");
-    return mergeQueries([...isolatedFragments, isolatedQuery]);
+    return getIsolatedQuery(prependUsedFragments(fragments, query), "wp", "WP");
   }, [query]);
 
   const { username, password } = extractURLCredentials(GRAPHQL_URL);

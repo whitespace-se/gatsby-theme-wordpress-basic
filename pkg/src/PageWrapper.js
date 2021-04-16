@@ -1,11 +1,11 @@
 import { HeadingLevelProvider } from "@jfrk/react-heading-levels";
 import { IDContextProvider } from "@jfrk/react-id";
+import { StoreProvider } from "@whitespace/gatsby-hooks";
 import React, { createContext } from "react";
 
 // import { AlertProvider } from "./hooks/alert";
-import { SiteLayout } from "./components/SiteLayout";
+import { SiteLayout } from "./components";
 import { PageContextProvider } from "./hooks/page-context";
-import { StoreProvider } from "./hooks/store";
 
 export const pageWrapperContext = createContext();
 

@@ -1,1 +1,0 @@
-export { WPBlocks } from "./WPBlocks";

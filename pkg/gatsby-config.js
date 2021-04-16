@@ -1,8 +1,6 @@
 const path = require("path");
 
-const autoprefixer = require("autoprefixer");
-
-module.exports = ({ basePath, fragmentsDir, wp } = {}) => {
+module.exports = ({ basePath, fragmentsDir, wp, postCss = {} } = {}) => {
   return {
     plugins: [
       {
@@ -12,17 +10,12 @@ module.exports = ({ basePath, fragmentsDir, wp } = {}) => {
         },
       },
 
-      {
-        resolve: `gatsby-plugin-sass`,
-        options: {
-          postCssPlugins: [autoprefixer()],
-          sassOptions: {
-            precision: 6,
-          },
-        },
-      },
-
       `gatsby-plugin-emotion`,
+
+      {
+        resolve: `gatsby-plugin-postcss`,
+        options: postCss,
+      },
 
       `gatsby-plugin-react-helmet`,
 

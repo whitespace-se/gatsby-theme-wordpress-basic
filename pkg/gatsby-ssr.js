@@ -4,7 +4,7 @@ import rehypeParse from "rehype-parse";
 import { PageWrapper } from "./src/PageWrapper";
 import createHTMLProcessor from "./src/utils/html";
 
-// import "./src/styles/index.scss";
+import "./src/index.css";
 
 const htmlProcessor = createHTMLProcessor({ rehypeParse });
 
