@@ -1,3 +1,7 @@
 figure.component {
   margin: 0;
 }
+
+.caption {
+  margin-top: var(--image-caption-margin-top, 0.5rem);
+}
