@@ -67,14 +67,14 @@ export default function Image({
           {...imgRestProps}
         />
       </Link>
-      {caption ? (
+      {!!caption && (
         <figcaption
           className={clsx(styles.caption, captionClassName)}
           {...captionRestProps}
         >
-          {caption && <>{caption}</>}
+          {caption}
         </figcaption>
-      ) : null}
+      )}
     </WrapperComponent>
   );
 }
