@@ -11,10 +11,10 @@ export default function usePages() {
           nodes {
             id
             parentId
-            title(format: RAW)
+            title
             isFrontPage
             uri
-            url: uri
+            ...WP_PageForPageTree
           }
         }
       }
