@@ -1,19 +1,13 @@
 import { H, Section } from "@jfrk/react-heading-levels";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Image, Time, WPBlocks } from "../components";
-import { usePageContext } from "../hooks/page-context";
 
 export default function SingleTemplate({ pageContext }) {
   const {
     contentNode: { title, dateGmt, featuredImage, contentMedia, blocksJSON },
     // isPreview,
   } = pageContext;
-
-  const [, setPageContext] = usePageContext();
-  useEffect(() => {
-    setPageContext(pageContext);
-  }, [pageContext]);
 
   return (
     <article>

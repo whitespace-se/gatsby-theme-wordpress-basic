@@ -1,6 +1,8 @@
 import React from "react";
 import rehypeParse from "rehype-parse";
 
+import { SiteLayout } from "./src/components";
+import { pageContext } from "./src/hooks";
 import { PageWrapper } from "./src/PageWrapper";
 import createHTMLProcessor from "./src/utils/html";
 
@@ -10,6 +12,17 @@ const htmlProcessor = createHTMLProcessor({ rehypeParse });
 
 export const wrapRootElement = ({ element }) => {
   return <PageWrapper context={{ htmlProcessor }}>{element}</PageWrapper>;
+};
+
+export const wrapPageElement = ({
+  element,
+  props: { pageContext: context, ...props },
+}) => {
+  return (
+    <pageContext.Provider value={context}>
+      <SiteLayout {...props}>{element}</SiteLayout>
+    </pageContext.Provider>
+  );
 };
 
 export const onPreRenderHTML = ({

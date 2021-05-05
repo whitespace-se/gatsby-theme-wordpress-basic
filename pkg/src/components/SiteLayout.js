@@ -1,5 +1,9 @@
 import React from "react";
 
-export default function SiteLayout({ children, ...restProps }) {
-  return <div {...restProps}>{children}</div>;
+export default function SiteLayout({ children }) {
+  return (
+    <div>
+      <main>{children}</main>
+    </div>
+  );
 }
