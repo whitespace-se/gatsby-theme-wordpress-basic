@@ -9,4 +9,6 @@ export * from "./page-context";
 
 export { default as usePages } from "./pages";
 
+export { default as useContentType } from "./useContentType";
+
 export { default as useContentTypes } from "./useContentTypes";
