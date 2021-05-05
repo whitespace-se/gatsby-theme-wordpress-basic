@@ -4,37 +4,8 @@ import { getPage } from "../utils/pageTree";
 
 import usePages from "./pages";
 
-export default function useMenus() {
-  let pages = usePages();
-  return useStaticQuery(graphql`
-    query WP_Menus {
-      wp {
-        menus {
-          nodes {
-            menuItems {
-              nodes {
-                connectedObject {
-                  ... on WP_Page {
-                    id
-                    contentType {
-                      node {
-                        name
-                      }
-                    }
-                  }
-                }
-                label
-                description
-                url
-                target
-              }
-            }
-            locations
-          }
-        }
-      }
-    }
-  `).wp.menus.nodes.map((menu) => ({
+function defaultTransform(data, { pages }) {
+  return data.wp.menus.nodes.map((menu) => ({
     ...menu,
     items: menu.menuItems.nodes.map((menuItem) => {
       let {
@@ -43,8 +14,7 @@ export default function useMenus() {
         description,
         url,
         target,
-        themeColor,
-        icon,
+        ...rest
       } = menuItem;
       let { contentType: { node: { name: type = "custom" } = {} } = {}, id } =
         connectedObject || {};
@@ -56,14 +26,25 @@ export default function useMenus() {
         ...content,
         label,
         description: description || (content && content.description),
-        themeColor,
-        icon,
+        ...rest,
       };
     }),
   }));
 }
 
-export function useMenu(location) {
-  let menus = useMenus();
+export default function useMenus({ transform = defaultTransform }) {
+  let pages = usePages();
+  let data = useStaticQuery(graphql`
+    query WP_Menus {
+      wp {
+        ...WP_MenusForHook
+      }
+    }
+  `);
+  return transform(data, { pages });
+}
+
+export function useMenu(location, { ...options }) {
+  let menus = useMenus({ ...options });
   return menus.find((menu) => (menu.locations || []).includes(location));
 }
