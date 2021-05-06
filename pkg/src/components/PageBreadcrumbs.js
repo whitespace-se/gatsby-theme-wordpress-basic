@@ -1,4 +1,3 @@
-import { Breadcrumbs } from "@whitespace/components";
 import { usePageContext } from "@whitespace/gatsby-theme-wordpress-basic/src/hooks/page-context";
 import usePages from "@whitespace/gatsby-theme-wordpress-basic/src/hooks/pages";
 import {
@@ -9,6 +8,8 @@ import {
 import React from "react";
 
 import { useContentTypes } from "../hooks";
+
+import Breadcrumbs from "./Breadcrumbs";
 
 export default function PageBreadcrumbs({
   items: customItems,

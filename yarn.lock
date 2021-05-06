@@ -2446,10 +2446,10 @@
     "@webassemblyjs/ast" "1.11.0"
     "@xtuc/long" "4.2.2"
 
-"@whitespace/components@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@whitespace/components/-/components-0.4.2.tgz#2015deaebca06ca9b1cb22c2ba5db18f6622bd0e"
-  integrity sha512-+c4kvrEFBmPPgrioasrmKmGwz+bAqKzv00qYuqnWakwpWQdj3zrz+uGjCvhTnTGt6GtX6qfMwZw3tTzZ/K5geg==
+"@whitespace/components@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@whitespace/components/-/components-0.4.3.tgz#b7cda56a7b9bc54eae7ee151d414896ca08ee832"
+  integrity sha512-y3AojEpJWwWZ9S1/+faDS4vqtQ0cGg81P/W4rY2ovinnNzt6f2kEzvpb8qam7LXoIB0RV4CfZlfT5vO5Xj0MlQ==
   dependencies:
     clsx "^1.1.1"
     prop-types "^15.7.2"
@@ -5414,7 +5414,7 @@ eslint-webpack-plugin@^2.5.3:
     normalize-path "^3.0.0"
     schema-utils "^3.0.0"
 
-eslint@^7.20.0, eslint@^7.24.0:
+eslint@^7.20.0, eslint@^7.24.0, eslint@^7.25.0:
   version "7.25.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.25.0.tgz#1309e4404d94e676e3e831b3a3ad2b050031eb67"
   integrity sha512-TVpSovpvCNpLURIScDRB6g5CYu/ZFq9GfX2hLNIV4dSBKxIWojeDODvYl3t0k0VtMxYeR8OXPCFE5+oHMlGfhw==
@@ -6547,7 +6547,7 @@ gatsby-util-fragments-extractor@1.1.2:
     tagged-template-noop "^2.1.1"
     traverse "^0.6.6"
 
-gatsby@^3.3.0:
+gatsby@^3.3.0, gatsby@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-3.4.1.tgz#ac92ac24a39764a4751e8fd58d799d3a66fe0f96"
   integrity sha512-LV6D2n7hyXmQyv96yU9kUsbXxzcxa1uN3H2fswi7NbZfSfM9snnoBdTi9s67sArQTw7WQSO8GRtvRm1YTNt84w==
