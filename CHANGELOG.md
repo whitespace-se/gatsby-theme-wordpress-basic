@@ -1,3 +1,8 @@
+## 0.3.1 (May 7, 2021)
+
+- Allow shadowing of styles for the `Breadcrumbs` component.
+- Use this package’s `Link` component in `Breadcrumbs`.
+
 ## 0.3.0 (May 5, 2021)
 
 ### BREAKING CHANGES
