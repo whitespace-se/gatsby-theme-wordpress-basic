@@ -2,12 +2,22 @@ import { H, Section } from "@jfrk/react-heading-levels";
 import React from "react";
 
 import { Image, Time, WPBlocks } from "../components";
+import { useHTMLProcessor } from "../hooks";
 
 export default function SingleTemplate({ pageContext }) {
   const {
-    contentNode: { title, dateGmt, featuredImage, contentMedia, blocksJSON },
+    contentNode: {
+      title,
+      dateGmt,
+      featuredImage,
+      content,
+      contentMedia,
+      blocksJSON,
+    },
     // isPreview,
   } = pageContext;
+
+  const { processContent } = useHTMLProcessor();
 
   return (
     <article>
@@ -19,11 +29,13 @@ export default function SingleTemplate({ pageContext }) {
         {!!(featuredImage && featuredImage.node) && (
           <Image {...featuredImage.node} />
         )}
-        {!!blocksJSON && (
+        {blocksJSON ? (
           <WPBlocks
             blocks={JSON.parse(blocksJSON)}
             contentMedia={contentMedia}
           />
+        ) : (
+          processContent(content, { contentMedia })
         )}
       </Section>
     </article>
