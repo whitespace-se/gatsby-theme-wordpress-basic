@@ -1,3 +1,9 @@
+## 0.3.2 (May 11, 2021)
+
+- Add support for image credit added by the `whitespace-wp-graphql-extras` WP
+  plugin.
+- Use HTML content for post types that doesn’t support Gutenberg editor
+
 ## 0.3.1 (May 7, 2021)
 
 - Allow shadowing of styles for the `Breadcrumbs` component.
