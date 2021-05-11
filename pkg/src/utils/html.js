@@ -63,11 +63,7 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
       );
     }
 
-    function WPCaption({
-      attachment: attachmentId,
-      children: caption,
-      ...restProps
-    }) {
+    function WPCaption({ attachment: attachmentId, children, ...restProps }) {
       let attachment = contentMedia.find(
         (attachment) => attachment.databaseId === Number(attachmentId),
       );
@@ -82,7 +78,8 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
         base64,
         aspectRatio,
         alt,
-        photograph: { name: credit } = {},
+        caption,
+        credit,
       } = attachment;
       return (
         <Image
@@ -93,7 +90,11 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
           base64={base64}
           aspectRatio={aspectRatio}
           alt={alt}
-          caption={processContent(attachment.caption || caption)}
+          caption={
+            React.Children.count(children) === 0
+              ? processContent(caption)
+              : children
+          }
           credit={credit}
           {...restProps}
         />

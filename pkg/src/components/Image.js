@@ -19,9 +19,11 @@ export default function Image({
   aspectRatio,
   alt,
   caption,
+  credit,
   linkTo,
   estimatedWidth = 320,
   captionProps: { className: captionClassName, ...captionRestProps } = {},
+  creditProps: { className: creditClassName, ...creditRestProps } = {},
   imgProps: { className: imgClassName, ...imgRestProps } = {},
   linkProps: { className: linkClassName, ...linkRestProps } = {},
   className,
@@ -67,12 +69,21 @@ export default function Image({
           {...imgRestProps}
         />
       </Link>
-      {!!caption && (
+      {!!(caption || credit) && (
         <figcaption
           className={clsx(styles.caption, captionClassName)}
           {...captionRestProps}
         >
           {caption}
+          {!!credit && (
+            // TODO: Translate
+            <p
+              className={(styles.credit, creditClassName)}
+              {...creditRestProps}
+            >
+              {"Fotograf: " + credit}
+            </p>
+          )}
         </figcaption>
       )}
     </WrapperComponent>
