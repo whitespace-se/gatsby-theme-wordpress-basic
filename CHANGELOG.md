@@ -1,3 +1,7 @@
+## 0.3.4 (May 14, 2021)
+
+- Fix error with `PageBreadcrumbs` on `/wp-preview` page.
+
 ## 0.3.3 (May 14, 2021)
 
 - Wrap page element in `ThemeProvider` and `IconProvider` from
