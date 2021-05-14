@@ -1,3 +1,8 @@
+## 0.3.3 (May 14, 2021)
+
+- Wrap page element in `ThemeProvider` and `IconProvider` from
+  @whitespace/components.
+
 ## 0.3.2 (May 11, 2021)
 
 - Add support for image credit added by the `whitespace-wp-graphql-extras` WP
