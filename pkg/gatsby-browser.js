@@ -1,3 +1,4 @@
+import { IconProvider, ThemeProvider } from "@whitespace/components";
 import React from "react";
 import rehypeParse from "rehype-dom-parse";
 import "url-polyfill";
@@ -5,6 +6,7 @@ import "url-polyfill";
 import { SiteLayout } from "./src/components";
 import { pageContext } from "./src/hooks";
 import { PageWrapper } from "./src/PageWrapper";
+import theme from "./src/theme";
 import createHTMLProcessor from "./src/utils/html";
 
 import "./src/index.css";
@@ -28,7 +30,11 @@ export const wrapPageElement = ({
 }) => {
   return (
     <pageContext.Provider value={context}>
-      <SiteLayout {...props}>{element}</SiteLayout>
+      <ThemeProvider theme={theme}>
+        <IconProvider getIconSrc={(name) => `/icons/${name}.svg`}>
+          <SiteLayout {...props}>{element}</SiteLayout>
+        </IconProvider>
+      </ThemeProvider>
     </pageContext.Provider>
   );
 };
