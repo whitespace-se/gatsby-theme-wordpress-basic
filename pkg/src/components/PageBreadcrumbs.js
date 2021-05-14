@@ -64,7 +64,7 @@ export default function PageBreadcrumbs({
   if (!items || items.length === 0) {
     return null;
   }
-  items = items.map(({ title, label, uri: url }) => ({
+  items = items.filter(Boolean).map(({ title, label, uri: url }) => ({
     label: label || title,
     url,
   }));
