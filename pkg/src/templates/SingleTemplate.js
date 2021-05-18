@@ -5,6 +5,8 @@ import { Image, Time, WPBlocks, BoxNavigation } from "../components";
 import { useHTMLProcessor } from "../hooks";
 import { usePageChildren, usePageSiblings } from "../hooks/boxNavigation";
 
+import * as styles from "./SingleTemplate.module.css";
+
 export default function SingleTemplate({ pageContext }) {
   const {
     contentNode: {
@@ -27,7 +29,7 @@ export default function SingleTemplate({ pageContext }) {
   return (
     <article>
       <H>{title}</H>
-      <BoxNavigation items={pageChildren} />
+      <BoxNavigation className={styles.childPages} items={pageChildren} />
       <Section>
         <div>
           Published: <Time date={dateGmt} />
@@ -43,7 +45,7 @@ export default function SingleTemplate({ pageContext }) {
         ) : (
           processContent(content, { contentMedia })
         )}
-        <BoxNavigation title="Relaterat innehåll" items={pageSiblings} />
+        <BoxNavigation className={styles.siblingPages} title="Relaterat innehåll" items={pageSiblings} />
       </Section>
     </article>
   );
