@@ -45,7 +45,11 @@ export default function SingleTemplate({ pageContext }) {
         ) : (
           processContent(content, { contentMedia })
         )}
-        <BoxNavigation className={styles.siblingPages} title="Relaterat innehåll" items={pageSiblings} />
+        <BoxNavigation
+          className={styles.siblingPages}
+          title="Relaterat innehåll"
+          items={pageSiblings}
+        />
       </Section>
     </article>
   );
