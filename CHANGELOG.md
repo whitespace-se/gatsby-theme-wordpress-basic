@@ -1,3 +1,8 @@
+## 0.3.5 (May 18, 2021)
+
+- Add box navigation for child and sibling pages
+- Remove body margin
+
 ## 0.3.4 (May 14, 2021)
 
 - Fix error with `PageBreadcrumbs` on `/wp-preview` page.
