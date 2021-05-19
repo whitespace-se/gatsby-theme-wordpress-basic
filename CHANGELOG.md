@@ -1,3 +1,7 @@
+## 0.3.6 (May 19, 2021)
+
+- Add box navigation styling in `<SingleTemplate>`
+
 ## 0.3.5 (May 18, 2021)
 
 - Add box navigation for child and sibling pages
