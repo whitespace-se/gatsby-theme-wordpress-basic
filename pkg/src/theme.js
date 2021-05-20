@@ -1,8 +1,6 @@
-export default theme;
-
 import Link from "./components/Link";
 
-var theme = {
+export default {
   default: {
     components: { Link },
   },
