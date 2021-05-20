@@ -14,7 +14,7 @@ import {
 
 
 import * as defaultStyles from "./Article.module.css";
-import { utilities, layout } from ".";
+import { utilities, layout } from "../foundation";
 
 
 export default withComponentDefaults(Article);
