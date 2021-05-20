@@ -9,7 +9,7 @@ import React from "react";
 
 import * as defaultStyles from "./BoxNavigation.module.css";
 
-export default withComponentDefaults(BoxNavigation);
+export default withComponentDefaults(BoxNavigation, "boxNavigation");
 
 function BoxNavigation({
   className,
