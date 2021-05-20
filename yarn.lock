@@ -2461,10 +2461,10 @@
     "@webassemblyjs/ast" "1.11.0"
     "@xtuc/long" "4.2.2"
 
-"@whitespace/components@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@whitespace/components/-/components-0.5.1.tgz#6d5749213cdf172e4439defd62659605c769a392"
-  integrity sha512-DpmNNMCwba1g6g1M9PdJBGvlhuLhbRAFTpZajmal9YNYaNDGE8ZQwpc3woPRNtFsueE4j57XqRy7ZSItDhBHdg==
+"@whitespace/components@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@whitespace/components/-/components-0.6.0.tgz#737259bd58d1e783e4e5538f507272de6d05d76b"
+  integrity sha512-/Pexs98V5znGm17juLQhazRLuNOyRya9emg8Yj1z/xWmQ/IwIfZgJWq95TGg1l71eVtWqzDWa9dNHhNTtUsU5A==
   dependencies:
     clsx "^1.1.1"
     prop-types "^15.7.2"
