@@ -1,4 +1,4 @@
-.featuredImage > div {
+.featuredImage .gatsby-image-wrapper {
   border-radius: 0.25rem;
 }
 
