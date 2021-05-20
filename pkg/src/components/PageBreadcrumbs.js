@@ -68,5 +68,5 @@ export default function PageBreadcrumbs({
     label: label || title,
     url,
   }));
-  return <Breadcrumbs items={items} {...restProps} />;
+  return <Breadcrumbs hideDescription={true} items={items} {...restProps} />;
 }
