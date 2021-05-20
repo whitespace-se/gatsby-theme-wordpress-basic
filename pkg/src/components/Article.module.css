@@ -7,7 +7,6 @@
   margin-bottom: 1.5rem;
 }
 
-
 .preamble {
   font-size: 1.25rem;
   font-weight: 400;
@@ -32,12 +31,12 @@
   margin-bottom: 0.5rem;
 }
 
-
-.metaTime, .metaAuthor, .metaTaxonomies  {
+.metaTime,
+.metaAuthor,
+.metaTaxonomies {
   display: block;
   font-size: 0.875rem;
 }
-
 
 .siblingPages {
   margin-top: 1rem;
