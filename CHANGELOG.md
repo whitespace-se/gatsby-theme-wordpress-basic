@@ -1,3 +1,7 @@
+## 0.3.8 (May 20, 2021)
+
+- Upgrade deps
+
 ## 0.3.7 (May 20, 2021)
 
 - Fix issue where theme config was not exported correctly.
