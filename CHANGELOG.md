@@ -1,3 +1,9 @@
+## 0.3.7 (May 20, 2021)
+
+- Fix issue where theme config was not exported correctly.
+- Hide page breadcrumbs description
+- Ensure Gatsby `<Link>` is used for internal links in all components.
+
 ## 0.3.6 (May 19, 2021)
 
 - Add box navigation styling in `<SingleTemplate>`
