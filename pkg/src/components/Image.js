@@ -1,10 +1,10 @@
+import { Link } from "@whitespace/components";
 import { useComponentSize } from "@whitespace/gatsby-hooks";
 import clsx from "clsx";
 import Img from "gatsby-image";
 import React, { useRef } from "react";
 
 import * as defaultStyles from "./Image.module.css";
-import Link from "./Link";
 
 export default function Image({
   styles = defaultStyles,

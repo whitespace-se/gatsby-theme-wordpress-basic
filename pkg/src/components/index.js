@@ -23,8 +23,5 @@ export { default as WPBlockController } from "./WPBlockController";
 export { default as WPBlocks } from "./WPBlocks";
 // export * from "./WPBlocks";
 
-export { default as WPLink } from "./WPLink";
-// export * from "./WPLink";
-
 export { default as BoxNavigation } from "./BoxNavigation";
 // export * from "./BoxNavigation";

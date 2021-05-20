@@ -1,11 +1,13 @@
 import { H } from "@jfrk/react-heading-levels";
-import { Button as DefaultButton } from "@whitespace/components";
+import {
+  Button as DefaultButton,
+  Link as DefaultLink,
+} from "@whitespace/components";
 import withComponentDefaults from "@whitespace/components/dist/withComponentDefaults";
 import clsx from "clsx";
 import React from "react";
 
 import * as defaultStyles from "./BoxNavigation.module.css";
-import DefaultLink from "./Link";
 
 export default withComponentDefaults(BoxNavigation);
 

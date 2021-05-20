@@ -1,3 +1,4 @@
+import { Link } from "@whitespace/components";
 import hastToString from "hast-util-to-string";
 import memoize from "lodash/memoize";
 import React from "react";
@@ -6,7 +7,7 @@ import unified from "unified";
 import visit from "unist-util-visit";
 import visitWithParents from "unist-util-visit-parents";
 
-import { Image, WPLink } from "../components";
+import { Image } from "../components";
 
 export default function createHTMLProcessor({ rehypeParse: parse }) {
   function splitTree() {
@@ -105,7 +106,7 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
       createElement: React.createElement,
       Fragment: React.Fragment,
       components: {
-        a: WPLink,
+        a: Link,
         "wp-caption": WPCaption,
         "wp-image": WPImage,
       },
@@ -120,67 +121,69 @@ export default function createHTMLProcessor({ rehypeParse: parse }) {
       node.properties.className.includes(className);
   }
 
-  const processContentTree = (options = {}) => (tree) => {
-    if (!tree) {
-      return tree;
-    }
+  const processContentTree =
+    (options = {}) =>
+    (tree) => {
+      if (!tree) {
+        return tree;
+      }
 
-    if (options.contentMedia) {
-      visit(tree, isElementWithClassName("wp-caption"), (node, index) => {
-        node.tagName = "wp-caption";
-        let [, attachment] = node.properties.id.match(/(\d+)/);
-        node.properties = {
-          attachment,
-        };
-        let newChildren = [];
-        visit(node, isElementWithClassName("wp-caption-text"), (node) => {
-          newChildren.push(...node.children);
-        });
-        node.children = newChildren;
-        return [visit.SKIP, index + 1];
-      });
-
-      visit(tree, { tagName: "img" }, (node, index, parent) => {
-        let attachmentId;
-        if (node.properties && node.properties.className) {
-          node.properties.className.some((className) => {
-            let matches = className.match(/^wp-image-(\d+)$/);
-            if (matches) {
-              attachmentId = matches[1];
-              return true;
-            }
-          });
-        }
-        if (!attachmentId) {
-          return;
-        }
-        node.tagName = "wp-image";
-        node.properties = {
-          ...node.properties,
-          attachment: attachmentId,
-          sizes: null,
-        };
-        if (parent.tagName === "p") {
-          parent.tagName = "div";
-          parent.properties = {
-            ...parent.properties,
-            className: [
-              ...((parent.properties && parent.properties.className) || []),
-              "paragraph",
-            ],
+      if (options.contentMedia) {
+        visit(tree, isElementWithClassName("wp-caption"), (node, index) => {
+          node.tagName = "wp-caption";
+          let [, attachment] = node.properties.id.match(/(\d+)/);
+          node.properties = {
+            attachment,
           };
-        }
-      });
-    }
+          let newChildren = [];
+          visit(node, isElementWithClassName("wp-caption-text"), (node) => {
+            newChildren.push(...node.children);
+          });
+          node.children = newChildren;
+          return [visit.SKIP, index + 1];
+        });
 
-    // let wpCaptionElements = selectAll(".wp-caption", tree);
-    // wpCaptionElements.forEach((node) => {
-    //   node.tagName = "wp-caption";
-    // });
+        visit(tree, { tagName: "img" }, (node, index, parent) => {
+          let attachmentId;
+          if (node.properties && node.properties.className) {
+            node.properties.className.some((className) => {
+              let matches = className.match(/^wp-image-(\d+)$/);
+              if (matches) {
+                attachmentId = matches[1];
+                return true;
+              }
+            });
+          }
+          if (!attachmentId) {
+            return;
+          }
+          node.tagName = "wp-image";
+          node.properties = {
+            ...node.properties,
+            attachment: attachmentId,
+            sizes: null,
+          };
+          if (parent.tagName === "p") {
+            parent.tagName = "div";
+            parent.properties = {
+              ...parent.properties,
+              className: [
+                ...((parent.properties && parent.properties.className) || []),
+                "paragraph",
+              ],
+            };
+          }
+        });
+      }
 
-    const stringifier = createStringifier(options);
-    return stringifier.stringify(tree);
-  };
+      // let wpCaptionElements = selectAll(".wp-caption", tree);
+      // wpCaptionElements.forEach((node) => {
+      //   node.tagName = "wp-caption";
+      // });
+
+      const stringifier = createStringifier(options);
+      return stringifier.stringify(tree);
+    };
 
   const processContent = memoize((content, options) => {
     const tree = unified().use(parse, { fragment: true }).parse(content);
