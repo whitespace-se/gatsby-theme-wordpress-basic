@@ -1,4 +1,8 @@
-import { IconProvider, ThemeProvider } from "@whitespace/components";
+import {
+  IconProvider,
+  ThemeProvider,
+  URLTransformerProvider,
+} from "@whitespace/components";
 import React from "react";
 import rehypeParse from "rehype-dom-parse";
 import "url-polyfill";
@@ -32,7 +36,13 @@ export const wrapPageElement = ({
     <pageContext.Provider value={context}>
       <ThemeProvider theme={theme}>
         <IconProvider getIconSrc={(name) => `/icons/${name}.svg`}>
-          <SiteLayout {...props}>{element}</SiteLayout>
+          <URLTransformerProvider
+            transformURL={(url) =>
+              url && url.replace(process.env.GATSBY_WORDPRESS_URL, "")
+            }
+          >
+            <SiteLayout {...props}>{element}</SiteLayout>
+          </URLTransformerProvider>
         </IconProvider>
       </ThemeProvider>
     </pageContext.Provider>
