@@ -1,3 +1,7 @@
+## 0.3.9 (May 20, 2021)
+
+- Transform WP URLs into relative URLs
+
 ## 0.3.8 (May 20, 2021)
 
 - Upgrade deps
