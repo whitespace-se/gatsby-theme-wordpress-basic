@@ -1,8 +1,7 @@
-import { useHTMLProcessor } from "@whitespace/gatsby-theme-wordpress-basic/src/hooks/html-processor";
 import React from "react";
 
-import { usePageChildren, usePageSiblings, useIsFullWidthPage, useIsFrontPage } from "@whitespace/gatsby-theme-wordpress-basic/src/hooks";
-import {Article} from "@whitespace/gatsby-theme-wordpress-basic/src/components";
+import { useHTMLProcessor, usePageChildren, usePageSiblings, useIsFullWidthPage, useIsFrontPage } from "../hooks";
+import {Article} from "../components";
 
 
 export default function SingleTemplate({ pageContext }) {
