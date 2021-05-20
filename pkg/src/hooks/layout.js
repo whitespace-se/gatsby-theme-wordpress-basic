@@ -19,5 +19,4 @@ export function useIsFrontPage(id) {
   const { isFrontPage } = getPage(allPages, id) || {};
 
   return isFrontPage;
-
 }

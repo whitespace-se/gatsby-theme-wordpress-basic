@@ -2,7 +2,6 @@
   margin-bottom: var(--flow, 1.5rem);
 }
 
-
 .component h1 {
   --flow: 0.5rem;
 }
@@ -23,13 +22,9 @@
   margin-top: 0;
 }
 
-
-
-
 .component iframe[src*="youtube"] {
   width: 100%;
 }
-
 
 .component p {
   line-height: 1.5;
