@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Article } from "../components";
 import {
   useHTMLProcessor,
   usePageChildren,
@@ -7,7 +8,6 @@ import {
   useIsFullWidthPage,
   useIsFrontPage,
 } from "../hooks";
-import { Article } from "../components";
 
 export default function SingleTemplate({ pageContext }) {
   const {
@@ -51,7 +51,7 @@ export default function SingleTemplate({ pageContext }) {
     content: content,
     lastUpdated: !useIsFrontPage(id) && modifiedGmt,
     managedBy: !useIsFrontPage(id) && managedBy,
-    taxonomies: postType == "post" && !!tags && [...tags],
+    taxonomies: (postType == "post" && tags.length) ? [...tags] : false
   };
 
   return <Article {...articleProps} />;
