@@ -11,9 +11,9 @@ import {
   BoxNavigation,
   TextContent,
 } from "../components";
+import { utilities, layout } from "../foundation";
 
 import * as defaultStyles from "./Article.module.css";
-import { utilities, layout } from "../foundation";
 
 export default withComponentDefaults(Article);
 
@@ -44,7 +44,7 @@ function Article({
     >
       {featuredImage && (
         <Image
-          className={clsx(defaultStyles.featuredImage)}
+          className={clsx(styles.featuredImage)}
           {...featuredImage}
         />
       )}
@@ -58,13 +58,13 @@ function Article({
       >
         <H className={clsx(hideTitle && utilities.visuallyHidden)}>{title}</H>
         <BoxNavigation
-          className={defaultStyles.childPages}
+          className={styles.childPages}
           items={pageChildren}
         />
         <Section>
           {publishedDate && (
             <div
-              className={clsx(defaultStyles.publishedDate)}
+              className={clsx(styles.publishedDate)}
               aria-label={"Publicerad"}
             >
               <Time
@@ -88,16 +88,16 @@ function Article({
             ) : (
               <>
                 {preamble && (
-                  <div className={clsx(defaultStyles.preamble)}>{preamble}</div>
+                  <div className={clsx(styles.preamble)}>{preamble}</div>
                 )}
                 {content}
               </>
             )}
           </TextContent>
           <footer>
-            <div className={defaultStyles.meta}>
+            <div className={styles.meta}>
               {lastUpdated && (
-                <span className={defaultStyles.metaTime}>
+                <span className={styles.metaTime}>
                   {"Uppdaterad "}
                   <Time
                     date={lastUpdated}
@@ -110,12 +110,12 @@ function Article({
                 </span>
               )}
               {managedBy && (
-                <span className={defaultStyles.metaAuthor}>
+                <span className={styles.metaAuthor}>
                   {"Sidansvarig: "} {managedBy}
                 </span>
               )}
               {taxonomies && (
-                <span className={defaultStyles.metaTaxonomies}>
+                <span className={styles.metaTaxonomies}>
                   {"Kategorier: "}{" "}
                   {taxonomies.map((taxonomy) => taxonomy.name).join(", ")}
                 </span>
@@ -123,7 +123,7 @@ function Article({
             </div>
           </footer>
           <BoxNavigation
-            className={defaultStyles.siblingPages}
+            className={styles.siblingPages}
             title="Relaterat innehåll"
             items={pageSiblings}
           />

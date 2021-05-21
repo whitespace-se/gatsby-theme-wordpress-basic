@@ -7,11 +7,11 @@ export default function TextContent({
   as: Component = "div",
   children,
   className,
-  style = defaultStyles,
+  styles = defaultStyles,
   ...restProps
 }) {
   return (
-    <Component className={clsx(style.component, className)} {...restProps}>
+    <Component className={clsx(styles.component, className)} {...restProps}>
       {children}
     </Component>
   );
