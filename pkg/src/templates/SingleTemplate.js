@@ -51,7 +51,7 @@ export default function SingleTemplate({ pageContext }) {
     content: content,
     lastUpdated: !useIsFrontPage(id) && modifiedGmt,
     managedBy: !useIsFrontPage(id) && managedBy,
-    taxonomies: (postType == "post" && tags.length) ? [...tags] : false
+    taxonomies: postType == "post" && tags.length ? [...tags] : false,
   };
 
   return <Article {...articleProps} />;
