@@ -43,10 +43,7 @@ function Article({
       {...restProps}
     >
       {featuredImage && (
-        <Image
-          className={clsx(styles.featuredImage)}
-          {...featuredImage}
-        />
+        <Image className={clsx(styles.featuredImage)} {...featuredImage} />
       )}
       <div
         className={clsx(
@@ -57,10 +54,7 @@ function Article({
         )}
       >
         <H className={clsx(hideTitle && utilities.visuallyHidden)}>{title}</H>
-        <BoxNavigation
-          className={styles.childPages}
-          items={pageChildren}
-        />
+        <BoxNavigation className={styles.childPages} items={pageChildren} />
         <Section>
           {publishedDate && (
             <div
