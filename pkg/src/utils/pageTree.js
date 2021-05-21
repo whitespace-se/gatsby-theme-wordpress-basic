@@ -53,3 +53,50 @@ export function getPageThemeColor(allPages, id) {
   }
   return "default";
 }
+
+export function getSubLevelPages(allPages, parent, level) {
+  let subLevelPages = [];
+
+  const childPages = getChildren(allPages, parent.id).filter(
+    (page) => page.showInMenu,
+  );
+
+  if (childPages.length) {
+    level++;
+    childPages
+      .filter((childPage) => childPage.showInMenu)
+      .map((childPage) => {
+        subLevelPages.push({
+          key: childPage.id,
+          label: childPage.title,
+          nodes: getSubLevelPages(allPages, childPage, level),
+          level: level,
+          ...childPage,
+        });
+      });
+  }
+
+  return subLevelPages;
+}
+
+export function getTreeStructure(allPages) {
+  let treeData = [];
+
+  getTopLevelPages(allPages)
+    .filter((page) => page.showInMenu !== false)
+    .map((page) => {
+      treeData.push({
+        key: page.id,
+        label: page.title,
+        level: 0,
+        ...page,
+      });
+    });
+
+  treeData.map((topLevelPage) => {
+
+    topLevelPage.nodes = getSubLevelPages(allPages, topLevelPage, 0);
+  });
+
+  return treeData;
+}
