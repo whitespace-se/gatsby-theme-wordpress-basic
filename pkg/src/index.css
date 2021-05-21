@@ -3,4 +3,4 @@ body {
   margin: 0;
 }
 
-@import url('../src/foundation/reset.module.css');
+@import url("../src/foundation/reset.module.css");
