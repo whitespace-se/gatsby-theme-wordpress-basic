@@ -39,7 +39,7 @@ function Article({
 }) {
   return (
     <article
-      className={clsx(layout.component, layout.componentWidthFull)}
+      className={clsx(layout.component, layout.componentWidthFull, className)}
       {...restProps}
     >
       {featuredImage && (
