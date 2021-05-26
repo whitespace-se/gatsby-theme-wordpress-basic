@@ -94,7 +94,6 @@ export function getTreeStructure(allPages) {
     });
 
   treeData.map((topLevelPage) => {
-
     topLevelPage.nodes = getSubLevelPages(allPages, topLevelPage, 0);
   });
 
