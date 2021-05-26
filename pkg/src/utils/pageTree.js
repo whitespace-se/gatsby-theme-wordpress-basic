@@ -62,15 +62,16 @@ export function getSubLevelPages(allPages, parent, level) {
   );
 
   if (childPages.length) {
-    level++;
+    // level++;
     childPages
       .filter((childPage) => childPage.showInMenu)
       .map((childPage) => {
         subLevelPages.push({
           key: childPage.id,
           label: childPage.title,
-          nodes: getSubLevelPages(allPages, childPage, level),
-          level: level,
+          children: getSubLevelPages(allPages, childPage, level),
+          // level: level,
+          url: childPage.uri,
           ...childPage,
         });
       });
@@ -88,14 +89,14 @@ export function getTreeStructure(allPages) {
       treeData.push({
         key: page.id,
         label: page.title,
-        level: 0,
+        // level: 0,
+        url: page.uri,
         ...page,
       });
     });
 
   treeData.map((topLevelPage) => {
-
-    topLevelPage.nodes = getSubLevelPages(allPages, topLevelPage, 0);
+    topLevelPage.children = getSubLevelPages(allPages, topLevelPage, 0);
   });
 
   return treeData;
