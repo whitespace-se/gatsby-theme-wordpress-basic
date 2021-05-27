@@ -1,50 +1,47 @@
-import { H, Section } from "@jfrk/react-heading-levels";
+import { Section } from "@jfrk/react-heading-levels";
 import withComponentDefaults from "@whitespace/components/dist/withComponentDefaults";
-
 import clsx from "clsx";
 import React from "react";
 
-import {
-  Image,
-  Time,
-  WPBlocks,
-  BoxNavigation,
-  TextContent,
-} from "../components";
-import { utilities, layout } from "../foundation";
+import { layout } from "../foundation";
+import { usePageContext, useIsFullWidthPage } from "../hooks";
 
 import * as defaultStyles from "./Article.module.css";
+import ArticleBody from "./ArticleBody";
+import ArticleChildPageNav from "./ArticleChildPageNav";
+import ArticleFeaturedImage from "./ArticleFeaturedImage";
+import ArticleMeta from "./ArticleMeta";
+import ArticlePublishDate from "./ArticlePublishDate";
+import ArticleSiblingPageNav from "./ArticleSiblingPageNav";
+import ArticleTagList from "./ArticleTagList";
+import ArticleTitle from "./ArticleTitle";
 
 export default withComponentDefaults(Article);
 
 function Article({
   className,
   styles = defaultStyles,
-  featuredImage,
-  isFullWidthPage,
-  hideTitle,
-  title,
-  pageChildren,
-  pageSiblings,
-  publishedDate,
-  blocksJSON,
-  contentMedia,
-  preamble,
-  content,
-  lastUpdated,
-  managedBy,
-  taxonomies,
-  children,
+  // displayMode,
   ...restProps
 }) {
+  let {
+    contentNode: {
+      id,
+      isFrontPage,
+      contentType: {
+        node: { name: contentTypeName },
+      },
+    },
+    // isPreview,
+  } = usePageContext();
+  let isFullWidthPage = useIsFullWidthPage(id, contentTypeName);
+
   return (
     <article
       className={clsx(layout.component, layout.componentWidthFull, className)}
       {...restProps}
     >
-      {featuredImage && (
-        <Image className={clsx(styles.featuredImage)} {...featuredImage} />
-      )}
+      <ArticleFeaturedImage styles={styles} />
       <div
         className={clsx(
           layout.component,
@@ -53,75 +50,18 @@ function Article({
             : layout.componentWidthNarrow,
         )}
       >
-        <H className={clsx(hideTitle && utilities.visuallyHidden)}>{title}</H>
-        <BoxNavigation className={styles.childPages} items={pageChildren} />
+        <ArticleTitle />
         <Section>
-          {publishedDate && (
-            <div
-              className={clsx(styles.publishedDate)}
-              aria-label={"Publicerad"}
-            >
-              <Time
-                date={publishedDate}
-                format={{
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                }}
-              />
-            </div>
+          <ArticleChildPageNav />
+          {contentTypeName === "post" && <ArticlePublishDate />}
+          <ArticleBody />
+          {!isFrontPage && (
+            <footer className={styles.meta}>
+              <ArticleMeta />
+              <ArticleTagList taxonomy="tags" />
+            </footer>
           )}
-          <TextContent>
-            {blocksJSON ? (
-              <>
-                <WPBlocks
-                  blocks={JSON.parse(blocksJSON)}
-                  contentMedia={contentMedia}
-                />
-              </>
-            ) : (
-              <>
-                {preamble && (
-                  <div className={clsx(styles.preamble)}>{preamble}</div>
-                )}
-                {content}
-              </>
-            )}
-          </TextContent>
-          <footer>
-            <div className={styles.meta}>
-              {lastUpdated && (
-                <span className={styles.metaTime}>
-                  {"Uppdaterad "}
-                  <Time
-                    date={lastUpdated}
-                    format={{
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    }}
-                  />
-                </span>
-              )}
-              {managedBy && (
-                <span className={styles.metaAuthor}>
-                  {"Sidansvarig: "} {managedBy}
-                </span>
-              )}
-              {taxonomies && (
-                <span className={styles.metaTaxonomies}>
-                  {"Kategorier: "}{" "}
-                  {taxonomies.map((taxonomy) => taxonomy.name).join(", ")}
-                </span>
-              )}
-            </div>
-          </footer>
-          <BoxNavigation
-            className={styles.siblingPages}
-            title="Relaterat innehåll"
-            items={pageSiblings}
-          />
-          {children}
+          {!isFrontPage && <ArticleSiblingPageNav />}
         </Section>
       </div>
     </article>
