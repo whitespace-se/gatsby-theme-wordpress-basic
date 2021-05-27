@@ -9,7 +9,7 @@ module.exports = ({
 } = {}) => {
   return {
     plugins: [
-      // We put this first so that all other `wrapPageElement` implementations will run before
+      // We put this first so that all other `wrapPageElement` implementations will run after
       { resolve: `@whitespace/gatsby-plugin-page-wrapper` },
 
       {
