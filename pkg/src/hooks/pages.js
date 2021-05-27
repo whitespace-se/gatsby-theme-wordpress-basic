@@ -14,7 +14,6 @@ export default function usePages() {
             title
             isFrontPage
             uri
-            showInMenu
             ...WP_PageForPageTree
           }
         }
