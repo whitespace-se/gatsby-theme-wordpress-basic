@@ -2497,6 +2497,13 @@
     tagged-template-noop "^2.1.1"
     toml "^3.0.0"
 
+"@whitespace/gatsby-plugin-page-wrapper@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@whitespace/gatsby-plugin-page-wrapper/-/gatsby-plugin-page-wrapper-0.1.0.tgz#38df0bd079b43c6224f5e3eb8da429847880b804"
+  integrity sha512-55st1izpkDFwH4DPSaFrmQf+aPaYyBWx5HI4XfQWC7RpLj7vX9T9cPLy+PulpDAVrkZlr2DTehIhqGKHLDDiBw==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@wry/context@^0.4.0":
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/@wry/context/-/context-0.4.4.tgz#e50f5fa1d6cfaabf2977d1fda5ae91717f8815f8"
