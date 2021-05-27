@@ -1,6 +1,12 @@
 const path = require("path");
 
-module.exports = ({ basePath, fragmentsDir, wp, postCss = {} } = {}) => {
+module.exports = ({
+  basePath,
+  fragmentsDir,
+  wp,
+  postCss = {},
+  i18next = {},
+} = {}) => {
   return {
     plugins: [
       {
@@ -9,6 +15,16 @@ module.exports = ({ basePath, fragmentsDir, wp, postCss = {} } = {}) => {
           fragmentsDir,
         },
       },
+
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: `${basePath}/locales`,
+          name: `locale`,
+        },
+      },
+
+      { resolve: "@whitespace/gatsby-plugin-i18next", options: i18next },
 
       `gatsby-plugin-emotion`,
 
