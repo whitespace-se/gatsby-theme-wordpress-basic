@@ -9,6 +9,9 @@ module.exports = ({
 } = {}) => {
   return {
     plugins: [
+      // We put this first so that all other `wrapPageElement` implementations will run before
+      { resolve: require.resolve(`./plugins/page-element-wrapper`) },
+
       {
         resolve: `gatsby-plugin-fragments`,
         options: {

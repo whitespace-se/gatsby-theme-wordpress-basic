@@ -1,16 +1,9 @@
-import {
-  IconProvider,
-  ThemeProvider,
-  URLTransformerProvider,
-} from "@whitespace/components";
 import React from "react";
 import rehypeParse from "rehype-dom-parse";
 import "url-polyfill";
 
-import { SiteLayout } from "./src/components";
-import { pageContext } from "./src/hooks";
-import { PageWrapper } from "./src/PageWrapper";
-import theme from "./src/theme";
+import PageElementWrapper from "./src/components/PageElementWrapper";
+import { HTMLProcessorProvider } from "./src/hooks";
 import createHTMLProcessor from "./src/utils/html";
 
 import "./src/index.css";
@@ -25,29 +18,12 @@ export const onServiceWorkerUpdateReady = () => {
 };
 
 export function wrapRootElement({ element }) {
-  return <PageWrapper context={{ htmlProcessor }}>{element}</PageWrapper>;
-}
-
-export const wrapPageElement = ({
-  element,
-  props: { pageContext: context, ...props },
-}) => {
   return (
-    <pageContext.Provider value={context}>
-      <ThemeProvider theme={theme}>
-        <IconProvider getIconSrc={(name) => `/icons/${name}.svg`}>
-          <URLTransformerProvider
-            transformURL={(url) =>
-              url && url.replace(process.env.GATSBY_WORDPRESS_URL, "")
-            }
-          >
-            <SiteLayout {...props}>{element}</SiteLayout>
-          </URLTransformerProvider>
-        </IconProvider>
-      </ThemeProvider>
-    </pageContext.Provider>
+    <HTMLProcessorProvider htmlProcessor={htmlProcessor}>
+      {element}
+    </HTMLProcessorProvider>
   );
-};
+}
 
 export function shouldUpdateScroll({
   routerProps: { location: newLocation } = {},
