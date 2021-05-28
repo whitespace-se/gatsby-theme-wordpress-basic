@@ -55,10 +55,9 @@ export function getPageThemeColor(allPages, id) {
 }
 
 export function getTreeStructure(allPages, parentId = null) {
-  return (
-    parentId == null
-      ? getTopLevelPages(allPages)
-      : getChildren(allPages, parentId)
+  return (parentId == null
+    ? getTopLevelPages(allPages)
+    : getChildren(allPages, parentId)
   )
     .filter((page) => page.showInMenu !== false)
     .map((page) => ({
