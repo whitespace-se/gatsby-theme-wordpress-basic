@@ -54,50 +54,18 @@ export function getPageThemeColor(allPages, id) {
   return "default";
 }
 
-export function getSubLevelPages(allPages, parent, level) {
-  let subLevelPages = [];
-
-  const childPages = getChildren(allPages, parent.id).filter(
-    (page) => page.showInMenu,
-  );
-
-  if (childPages.length) {
-    // level++;
-    childPages
-      .filter((childPage) => childPage.showInMenu)
-      .map((childPage) => {
-        subLevelPages.push({
-          key: childPage.id,
-          label: childPage.title,
-          children: getSubLevelPages(allPages, childPage, level),
-          // level: level,
-          url: childPage.uri,
-          ...childPage,
-        });
-      });
-  }
-
-  return subLevelPages;
-}
-
-export function getTreeStructure(allPages) {
-  let treeData = [];
-
-  getTopLevelPages(allPages)
+export function getTreeStructure(allPages, parentId = null) {
+  return (
+    parentId == null
+      ? getTopLevelPages(allPages)
+      : getChildren(allPages, parentId)
+  )
     .filter((page) => page.showInMenu !== false)
-    .map((page) => {
-      treeData.push({
-        key: page.id,
-        label: page.title,
-        // level: 0,
-        url: page.uri,
-        ...page,
-      });
-    });
-
-  treeData.map((topLevelPage) => {
-    topLevelPage.children = getSubLevelPages(allPages, topLevelPage, 0);
-  });
-
-  return treeData;
+    .map((page) => ({
+      key: page.id,
+      label: page.title,
+      url: page.uri,
+      ...page,
+      children: getTreeStructure(allPages, page.id),
+    }));
 }
