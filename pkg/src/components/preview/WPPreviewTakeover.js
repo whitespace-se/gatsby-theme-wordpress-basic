@@ -1,4 +1,4 @@
-import { css } from "@emotion/core";
+import { css } from "@emotion/css";
 import React from "react";
 
 export default function WPPreviewTakeover({ children, ...restProps }) {
