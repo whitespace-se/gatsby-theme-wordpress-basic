@@ -1,3 +1,3 @@
 # Gatsby Theme for Wordpress
 
-Gatsby theme for Wordpress.
+Moved to https://github.com/whitespace-se/gatsby-packages
