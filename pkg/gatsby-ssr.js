@@ -1,7 +1,6 @@
 import React from "react";
 import rehypeParse from "rehype-parse";
 
-import PageElementWrapper from "./src/components/PageElementWrapper";
 import { HTMLProcessorProvider } from "./src/hooks";
 import createHTMLProcessor from "./src/utils/html";
 
